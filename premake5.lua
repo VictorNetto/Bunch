@@ -4,13 +4,18 @@ workspace "BunchPhysicEngine"
 		"Debug",
 		"Release"
 	}
+	platforms { "Windows" }
+
+	filter "platforms:Windows"
+	systemversion "10.0.17763.0"  --  Specify the version of the SDK
 
 project "Bunch"
 	location "Bunch"
-    kind "ConsoleApp" -- Change this to Static Library
+    kind "StaticLib"
     language "C++"
 
     targetdir "bin/%{cfg.buildcfg}"
+	objdir "bin-int/%{cfg.buildcfg}"
 
 	files 
 	{
@@ -30,3 +35,4 @@ project "Bunch"
 	filter "configurations:Release"
 	defines { "NDEBUG" }
 	optimize "on"
+
