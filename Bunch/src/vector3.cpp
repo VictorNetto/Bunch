@@ -8,26 +8,6 @@ Vector3::Vector3()
 Vector3::Vector3(real x, real y, real z)
 	: x(x), y(y), z(z) {}
 
-Vector3 Vector3::operator+(const Vector3& other)
-{
-	return { x + other.x, y + other.y, z + other.z };
-}
-
-Vector3 Vector3::operator-(const Vector3& other)
-{
-	return { x - other.x, y - other.y, z - other.z };
-}
-
-Vector3 Vector3::operator*(real n)
-{
-	return { x * n, y * n, z * n };
-}
-
-Vector3 Vector3::operator/(real n)
-{
-	return { x / n, y / n, z / n };
-}
-
 void Vector3::operator+=(const Vector3& other)
 {
 	*this = *this + other;
@@ -80,4 +60,24 @@ Vector3 Vector3::get_unit()
 {
 	real vector_length = length();
 	return { x / vector_length, y / vector_length, z / vector_length };
+}
+
+Vector3 bunch::operator+(const Vector3& vec, const Vector3& vec2)
+{
+	return { vec.x + vec2.x, vec.y + vec2.y, vec.z + vec2.z };
+}
+
+Vector3 bunch::operator-(const Vector3& vec, const Vector3& vec2)
+{
+	return { vec.x - vec2.x, vec.y - vec2.y, vec.z - vec2.z };
+}
+
+Vector3 bunch::operator*(const Vector3& vec, real n)
+{
+	return { vec.x * n, vec.y * n, vec.z * n };
+}
+
+Vector3 bunch::operator/(const Vector3& vec, real n)
+{
+	return { vec.x / n, vec.y / n, vec.z / n };
 }
