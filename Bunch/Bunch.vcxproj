@@ -91,11 +91,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\particle.h" />
+    <ClInclude Include="include\particle_collision.h" />
     <ClInclude Include="include\precision.h" />
     <ClInclude Include="include\vector3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\particle.cpp" />
+    <ClCompile Include="src\particle_collision.cpp" />
     <ClCompile Include="src\vector3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -12,6 +12,9 @@
     <ClInclude Include="include\particle.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\particle_collision.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="include\precision.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -21,6 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\particle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\particle_collision.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\vector3.cpp">
