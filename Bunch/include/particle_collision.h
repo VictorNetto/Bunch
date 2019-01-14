@@ -4,9 +4,10 @@
 #include <vector3.h>
 #include <particle.h>
 
-namespace bunch {
-	const Particle* NOT_A_PARTICLE = nullptr;
+#include <vector>
+#include <algorithm>
 
+namespace bunch {
 	/*
 	Data to represent a collision between two particles
 	or between a particle and the scnery (in this case particle2 = NOT_A_PARTICLE).
@@ -18,15 +19,30 @@ namespace bunch {
 	struct ParticleCollisionData {
 		Particle* particle1;
 		Particle* particle2;
-		Vector3 collisionNormal;
+		Vector3 collisionNormal;  // this must be an unit vector
 		real penetration;
 		real restitution;
 	};
 
+
 	/*
-	Compute the separating velocity in collisionNormal direction.
+	Base class for collision detection. The collision data is kept in m_collisions
+	and can be quered via get_collisions() with the appropiate importance.
+	Put information in the m_collisions is job for the childs of this class
 	*/
-	real separating_velocity(const ParticleCollisionData& data);
+	class ParticleCollisionDetector {
+	public:
+		std::vector<ParticleCollisionData> get_collisions(int importance);
+
+	protected:
+		std::vector<ParticleCollisionData> m_collisions;
+
+		enum Importance
+		{
+			none, by_sep_velocity, by_penetration
+		};
+		Importance m_currentImportance = Importance::none;
+	};
 
 	/*
 	Resolve a single collision. This functions must be called several times
