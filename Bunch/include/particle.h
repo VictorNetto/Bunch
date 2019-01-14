@@ -9,8 +9,9 @@ namespace bunch {
 
 	/*
 	A Particle is a object with mass (a real number),
-	position, velocity an acceleration (all are Vector3)
-	and dragging and friction coefficients (real numbers).
+	position, velocity an acceleration (all are Vector3),
+	dragging and friction coefficients (real numbers) and
+	a bouncing coefficient (real number) for restitution calculation
 
 	Particles can interact among themselves by forces and
 	impulses, and with the scnery by impulses. Forces and
@@ -29,10 +30,12 @@ namespace bunch {
 		real dragging;
 		real friction;
 
+		real bouncing;  // used to compute restitution
+
 	public:
 		Particle();
 		Particle(real mass, const Vector3& pos, const Vector3& vel, const Vector3& acc = GRAVITY,
-			real dragging = 1, real friction = 0);
+			real dragging = 1, real friction = 0, real bouncing = 1);
 
 		void add_force(const Vector3& force);  // add a force to act in the next integration step
 		void integrate(real dt);  // update particle's position, velocity and acceleration

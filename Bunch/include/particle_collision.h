@@ -8,6 +8,7 @@
 #include <algorithm>
 
 namespace bunch {
+	const void* NOT_A_PARTICLE = nullptr;
 	/*
 	Data to represent a collision between two particles
 	or between a particle and the scnery (in this case particle2 = NOT_A_PARTICLE).
@@ -35,7 +36,9 @@ namespace bunch {
 		std::vector<ParticleCollisionData> get_collisions(int importance);
 
 	protected:
-		std::vector<ParticleCollisionData> m_collisions;
+		virtual void detect() = 0;  // detect all collisions and put them in m_collisions
+
+		std::vector<ParticleCollisionData> m_collisions;  // collisions data
 
 		enum Importance
 		{

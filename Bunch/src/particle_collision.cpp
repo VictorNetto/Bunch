@@ -32,6 +32,7 @@ struct CompareBySepVelocity {
 std::vector<ParticleCollisionData> ParticleCollisionDetector::get_collisions(int importance)
 {
 	if (importance == m_currentImportance) return m_collisions;  // we already have the correct data
+	m_currentImportance = static_cast<Importance>(importance);
 
 	if (importance == Importance::by_penetration) {  // sort by penetration: more positives came first
 		std::sort(m_collisions.begin(), m_collisions.end(), CompareByPenetration());
