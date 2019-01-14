@@ -8,7 +8,7 @@
 #include <algorithm>
 
 namespace bunch {
-	const void* NOT_A_PARTICLE = nullptr;
+	extern Particle* NOT_A_PARTICLE;
 	/*
 	Data to represent a collision between two particles
 	or between a particle and the scnery (in this case particle2 = NOT_A_PARTICLE).

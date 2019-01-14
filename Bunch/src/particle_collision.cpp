@@ -2,6 +2,8 @@
 
 using namespace bunch;
 
+Particle* NOT_A_PARTICLE = nullptr;
+
 /*
 Functions declarations. Definitions bellow.
 */

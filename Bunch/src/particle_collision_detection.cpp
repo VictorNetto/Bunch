@@ -2,7 +2,7 @@
 
 using namespace bunch;
 
-ParticleCollisionWithGroundDetector::ParticleCollisionWithGroundDetector(real y_height, real bouncing = 1)
+ParticleCollisionWithGroundDetector::ParticleCollisionWithGroundDetector(real y_height, real bouncing)
 	: m_yHeight(y_height), m_bouncing(bouncing) {}
 
 void ParticleCollisionWithGroundDetector::add_particle(Particle* particle)
@@ -21,7 +21,7 @@ void ParticleCollisionWithGroundDetector::detect()
 			data.particle1 = p;
 			data.particle2 = NOT_A_PARTICLE;
 			data.penetration = m_yHeight - p->position.y;
-			data.restituion = m_bouncing * p->bouncing;
+			data.restitution = m_bouncing * p->bouncing;
 
 			m_collisions.push_back(data);
 		}

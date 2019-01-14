@@ -2,7 +2,7 @@
 
 #include <precision.h>
 #include <vector3.h>
-#include <particle>
+#include <particle.h>
 #include <particle_collision.h>
 
 #include <vector>

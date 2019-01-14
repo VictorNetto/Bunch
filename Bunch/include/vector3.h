@@ -58,11 +58,7 @@ namespace bunch {
 	const Vector3 INSIDE_VECTOR = Z_DIR * (-1);
 
 #ifdef DEBUG
-	std::ostream& operator<<(std::ostream& os, const Vector3& vector)
-	{
-		os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")\n";
-		return os;
-	}
+	std::ostream& operator<<(std::ostream& os, const Vector3& vector);
 #endif // DEBUG
 
 }

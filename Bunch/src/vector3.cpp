@@ -81,3 +81,11 @@ Vector3 bunch::operator/(const Vector3& vec, real n)
 {
 	return { vec.x / n, vec.y / n, vec.z / n };
 }
+
+#ifdef DEBUG
+std::ostream& operator<<(std::ostream& os, const Vector3& vector)
+{
+	os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")\n";
+	return os;
+}
+#endif

@@ -28,8 +28,8 @@ Particle::Particle()
 	set_mass(1);
 }
 
-Particle::Particle(real mass, const Vector3& pos, const Vector3& vel, const Vector3& acc = GRAVITY,
-	real dragging = 1, real friction = 0, real bouncing = 1)
+Particle::Particle(real mass, const Vector3& pos, const Vector3& vel, const Vector3& acc,
+	real dragging, real friction, real bouncing)
 	: position(pos), velocity(vel), acceleration(acc), dragging(dragging), friction(friction), bouncing(bouncing)
 {
 	set_mass(mass);
