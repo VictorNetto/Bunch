@@ -31,25 +31,32 @@ struct CompareBySepVelocity {
 	}
 };
 
-std::vector<ParticleCollisionData> ParticleCollisionDetector::get_collisions(int importance)
+std::vector<ParticleCollisionData>& ParticleCollisionDetector::get_collisions()
 {
-	if (importance == m_currentImportance) return m_collisions;  // we already have the correct data
-	m_currentImportance = static_cast<Importance>(importance);
-
-	if (importance == Importance::by_penetration) {  // sort by penetration: more positives came first
-		std::sort(m_collisions.begin(), m_collisions.end(), CompareByPenetration());
-	}
-	else if (importance == Importance::by_sep_velocity) {  // sort by separanting velocity: more negatives came first
-		std::sort(m_collisions.begin(), m_collisions.end(), CompareBySepVelocity());
-	}
-
 	return m_collisions;
 }
 
-void bunch::resolve_collision(ParticleCollisionData& data)
+void ParticleCollisionDetector::add_collisible_particle(Particle* particle)
 {
-	resolve_velocity(data);
-	resolve_penetration(data);
+	m_collisibleParticles.push_back(particle);
+}
+
+void bunch::sort_by(std::vector<ParticleCollisionData>& data, int importance)
+{
+	if (importance == Importance::by_penetration) {  // sort by penetration: more positives came first
+		std::sort(data.begin(), data.end(), CompareByPenetration());
+	}
+	else if (importance == Importance::by_sep_velocity) {  // sort by separanting velocity: more negatives came first
+		std::sort(data.begin(), data.end(), CompareBySepVelocity());
+	}
+}
+
+void bunch::resolve_collision(std::vector<ParticleCollisionData>& data)
+{
+	sort_by(data, Importance::by_sep_velocity);
+	resolve_velocity(data[0]);  // particles with more negative separating velocity are resolved first
+	sort_by(data, Importance::by_penetration);
+	resolve_penetration(data[0]);  // particles with greater penetration are resolved first
 }
 
 /*

@@ -5,16 +5,11 @@ using namespace bunch;
 ParticleCollisionWithGroundDetector::ParticleCollisionWithGroundDetector(real y_height, real bouncing)
 	: m_yHeight(y_height), m_bouncing(bouncing) {}
 
-void ParticleCollisionWithGroundDetector::add_particle(Particle* particle)
-{
-	m_particles.push_back(particle);
-}
-
 void ParticleCollisionWithGroundDetector::detect()
 {
 	m_collisions.clear();  // remove all old collision data
 	
-	for (Particle* p : m_particles) {
+	for (Particle* p : m_collisibleParticles) {
 		if (p->position.y < m_yHeight) {
 			ParticleCollisionData data;
 			data.collisionNormal = UP_VECTOR;  // UP_VECTOR == (0, 1, 0)
