@@ -18,6 +18,9 @@
     <ClInclude Include="include\particle_collision_detection.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\particle_force.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="include\particle_world.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -36,6 +39,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\particle_collision_detection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\particle_force.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\particle_world.cpp">

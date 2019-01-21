@@ -3,6 +3,7 @@
 #include <vector3.h>
 #include <particle.h>
 #include <particle_collision.h>
+#include <particle_force.h>
 
 #include <vector>
 
@@ -20,6 +21,7 @@ namespace bunch {
 
 		unsigned int add_particle(Particle particle);  // add particle to the list of particles and return an identifier
 		void add_collision_detector(ParticleCollisionDetector* detector);  // add a detector of collision to the world
+		void add_force(ParticleForce* force);  // add a force to the world
 
 		void integrate(real dt);  // update the whole world by an amont of time dt
 
@@ -27,7 +29,8 @@ namespace bunch {
 		int m_maxCollisionDetections;
 
 		std::vector<Particle> m_particles;  // list of particles of the world
-		std::vector<ParticleCollisionDetector*> m_collisionDetectors;
+		std::vector<ParticleCollisionDetector*> m_collisionDetectors;  // list of collisions detectors
+		std::vector<ParticleForce*> m_forces;  // list of forces
 	};
 
 }

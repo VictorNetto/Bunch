@@ -31,6 +31,13 @@ void ParticleWorld::add_collision_detector(ParticleCollisionDetector* detector)
 	m_collisionDetectors.push_back(detector);
 }
 
+/*
+Just add a pointer of a force to the list of forces
+*/
+void ParticleWorld::add_force(ParticleForce* force)
+{
+	m_forces.push_back(force);
+}
 
 /*
 Integrate the world by an amount of time dt. This is done by resolving collisions,
@@ -50,6 +57,9 @@ void ParticleWorld::integrate(real dt)
 	}
 
 	// then we apply the forces
+	for (ParticleForce* force : m_forces) {
+		force->apply_force();
+	}
 
 	// finally we integrate the particles
 	for (Particle particle : m_particles) {
