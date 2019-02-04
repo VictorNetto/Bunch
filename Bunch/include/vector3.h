@@ -46,9 +46,9 @@ namespace bunch {
 	Vector3 operator*(const Vector3& vec, real n);
 	Vector3 operator/(const Vector3& vec, real n);
 
-	const Vector3 X_DIR = { 1, 0, 0 };
-	const Vector3 Y_DIR = { 0, 1, 0 };
-	const Vector3 Z_DIR = { 0, 0, 1 };
+	const Vector3 X_DIR = Vector3(1, 0, 0);
+	const Vector3 Y_DIR = Vector3(0, 1, 0);
+	const Vector3 Z_DIR = Vector3(0, 0, 1);
 
 	const Vector3 RIGHT_VECTOR = X_DIR;
 	const Vector3 LEFT_VECTOR = X_DIR * (-1);

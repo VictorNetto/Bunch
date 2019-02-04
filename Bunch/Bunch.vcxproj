@@ -46,14 +46,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Windows|Win32'">
-    <OutDir>..\bin\Debug\</OutDir>
-    <IntDir>..\bin-int\Debug\</IntDir>
+    <OutDir>..\bin\Bunch\Debug\</OutDir>
+    <IntDir>..\bin-int\Bunch\Debug\</IntDir>
     <TargetName>Bunch</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Windows|Win32'">
-    <OutDir>..\bin\Release\</OutDir>
-    <IntDir>..\bin-int\Release\</IntDir>
+    <OutDir>..\bin\Bunch\Release\</OutDir>
+    <IntDir>..\bin-int\Bunch\Release\</IntDir>
     <TargetName>Bunch</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>

@@ -27,4 +27,33 @@ namespace bunch {
 		real m_bouncing;
 	};
 
+	/*
+	Keep two particle connect via a cable. Collisions are generated only if the distance between the
+	particle is greater than the clable's length.
+	*/
+	class ParticleCable : public ParticleCollisionDetector {
+	public:
+		ParticleCable(Particle* particle1, Particle* particle2, real cableLength, real bouncing = 0);
+
+		virtual void add_collisible_particle(Particle* particle) {}  // do nothing
+		virtual void detect();
+
+	private:
+		real m_cableLength;
+		real m_bouncing;
+	};
+
+	/*
+	Keep two particle connect via a rod: the distance between the particle is always the rod's length
+	*/
+	class ParticleRod : public ParticleCollisionDetector {
+	public:
+		ParticleRod(Particle* particle1, Particle* particle2, real rodLength);
+
+		virtual void add_collisible_particle(Particle* particle) {}  // do nothing
+		virtual void detect();
+
+	private:
+		real m_rodLength;
+	};
 }
